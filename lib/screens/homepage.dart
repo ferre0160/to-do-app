@@ -27,7 +27,15 @@ class _HomePageState extends State<HomePage> {
                   image: AssetImage('assets/logo.png'),
                 ),
               ),
-              TaskCardWidget(),
+              TaskCardWidget(
+                title: "Taak 1",
+                desc: "Dit is mijn eerste taak.",
+              ),
+              TaskCardWidget(
+                title: "Taak 2",
+                desc: "Dit is mijn tweede taak.",
+              ),
+              TaskCardWidget(title: "Taak 3", desc: "Dit is taak 3.")
             ],
           ),
         ),
