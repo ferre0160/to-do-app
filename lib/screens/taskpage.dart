@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/widgets.dart';
 
 class Taskpage extends StatefulWidget {
   const Taskpage({Key? key}) : super(key: key);
@@ -14,10 +15,12 @@ class _TaskpageState extends State<Taskpage> {
       body: SafeArea(
         child: Container(
             child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 24,
+              padding: const EdgeInsets.only(
+                top: 24,
+                bottom: 6,
               ),
               child: Row(
                 children: [
@@ -45,7 +48,36 @@ class _TaskpageState extends State<Taskpage> {
                   ))
                 ],
               ),
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                bottom: 12,
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                    hintText: "Enter a description for your task ...",
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 24,
+                    )),
+              ),
+            ),
+            TodoWidget(
+              text: "Create first task",
+              isDone: true,
+            ),
+            TodoWidget(
+              text: "hghgh",
+              isDone: false,
+            ),
+            TodoWidget(
+              text: "uououo",
+              isDone: false,
+            ),
+            TodoWidget(
+              text: "ererer",
+              isDone: false,
+            ),
           ],
         )),
       ),

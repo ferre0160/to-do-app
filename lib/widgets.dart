@@ -37,3 +37,41 @@ class TaskCardWidget extends StatelessWidget {
         ));
   }
 }
+
+class TodoWidget extends StatelessWidget {
+  const TodoWidget({Key? key, required this.text, required this.isDone})
+      : super(key: key);
+
+  final String text;
+  final bool isDone;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 24,
+        vertical: 8,
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 20,
+            height: 20,
+            margin: EdgeInsets.only(right: 12),
+            decoration: BoxDecoration(
+                color: isDone ? Color(0xFF7349FE) : Colors.transparent,
+                borderRadius: BorderRadius.circular(6)),
+            child: Image(image: AssetImage('assets/check_icon.png')),
+          ),
+          Text(
+            text ?? "(To-Do Widget)",
+            style: TextStyle(
+                color: Color(0xFF211551),
+                fontSize: 16,
+                fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
+}
