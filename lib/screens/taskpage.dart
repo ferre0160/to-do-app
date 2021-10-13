@@ -14,70 +14,94 @@ class _TaskpageState extends State<Taskpage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 24,
-                bottom: 6,
-              ),
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Image(
-                        image: AssetImage('assets/back_arrow_icon.png'),
-                      ),
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 24,
+                    bottom: 6,
                   ),
-                  Expanded(
-                      child: TextField(
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: Image(
+                            image: AssetImage('assets/back_arrow_icon.png'),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                          child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter task title",
+                          border: InputBorder.none,
+                        ),
+                        style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF211551)),
+                      ))
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: 12,
+                  ),
+                  child: TextField(
                     decoration: InputDecoration(
-                      hintText: "Enter task title",
-                      border: InputBorder.none,
-                    ),
-                    style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF211551)),
-                  ))
-                ],
-              ),
+                        hintText: "Enter a description for your task ...",
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 24,
+                        )),
+                  ),
+                ),
+                TodoWidget(
+                  text: "Create first project",
+                  isDone: true,
+                ),
+                TodoWidget(
+                  text: "Upload first project to Github",
+                  isDone: false,
+                ),
+                TodoWidget(),
+                TodoWidget(
+                  isDone: true,
+                ),
+                TodoWidget(),
+                TodoWidget(
+                  isDone: true,
+                )
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: 12,
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                    hintText: "Enter a description for your task ...",
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 24,
+            Positioned(
+              bottom: 24,
+              right: 24,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Taskpage()));
+                },
+                child: Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFE3577),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Image(
+                      image: AssetImage("assets/delete_icon.png"),
                     )),
               ),
-            ),
-            TodoWidget(
-              text: "Create first task",
-              isDone: true,
-            ),
-            TodoWidget(
-              text: "hghgh",
-              isDone: false,
-            ),
-            TodoWidget(
-              text: "uououo",
-              isDone: false,
-            ),
-            TodoWidget(
-              text: "ererer",
-              isDone: false,
-            ),
+            )
           ],
         )),
       ),

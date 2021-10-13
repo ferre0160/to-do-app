@@ -63,6 +63,7 @@ flutter:
     - assets/add_icon.png
     - assets/back_arrow_icon.png
     - assets/check_icon.png
+    - assets/delete_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

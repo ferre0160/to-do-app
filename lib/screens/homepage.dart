@@ -30,17 +30,21 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Expanded(
-                    child: ListView(
-                      children: [
-                        TaskCardWidget(
-                            title: "Taak 1", desc: "Dit is mijn eerste taak."),
-                        TaskCardWidget(
-                            title: "Taak 2", desc: "Dit is mijn tweede taak."),
-                        TaskCardWidget(title: "Taak 3", desc: "Dit is taak 3."),
-                        TaskCardWidget(title: "Taak 4", desc: "Dit is taak 4"),
-                        TaskCardWidget(title: "Taak 5", desc: "Dit is taak 5"),
-                        TaskCardWidget(title: "Taak 6", desc: "Dit is taak 6"),
-                      ],
+                    child: ScrollConfiguration(
+                      behavior: NoGlowScrollBehaviour(),
+                      child: ListView(
+                        children: [
+                          TaskCardWidget(),
+                          TaskCardWidget(
+                              title: "Taak 2",
+                              desc: "Dit is mijn tweede taak."),
+                          TaskCardWidget(
+                              title: "Taak 3", desc: "Dit is taak 3."),
+                          TaskCardWidget(),
+                          TaskCardWidget(title: "Taak 5"),
+                          TaskCardWidget(desc: "Dit is taak 6"),
+                        ],
+                      ),
                     ),
                   )
                 ],
@@ -57,14 +61,18 @@ class _HomePageState extends State<HomePage> {
                       width: 60,
                       height: 60,
                       decoration: BoxDecoration(
-                        color: Color(0xFF7349FE),
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF7349FE), Color(0xFF643FDB)],
+                          begin: Alignment(0, -1),
+                          end: Alignment(0, 1),
+                        ),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Image(
                         image: AssetImage("assets/add_icon.png"),
                       )),
                 ),
-              )
+              ),
             ],
           ),
         ),

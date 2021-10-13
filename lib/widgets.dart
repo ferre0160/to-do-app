@@ -1,10 +1,16 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TaskCardWidget extends StatelessWidget {
   final String title;
   final String desc;
-  const TaskCardWidget({Key? key, required this.title, required this.desc})
+  const TaskCardWidget(
+      {Key? key,
+      this.title = "(Unnamed Task)",
+      this.desc =
+          'Hello User! Welcome to the TODO app, this is a default task that you can edit or delete to start using the app.'})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,7 @@ class TaskCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title ?? "(Unnamed Task)",
+              title,
               style: TextStyle(
                   color: Color(0xFF211551),
                   fontSize: 22,
@@ -27,8 +33,7 @@ class TaskCardWidget extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 10),
               child: Text(
-                desc ??
-                    'Hello User! Welcome to the TODO app, this is a default task that you can edit or delete to start using the app.',
+                desc,
                 style: TextStyle(
                     fontSize: 16, color: Color(0xFF868290), height: 1.5),
               ),
@@ -39,7 +44,8 @@ class TaskCardWidget extends StatelessWidget {
 }
 
 class TodoWidget extends StatelessWidget {
-  const TodoWidget({Key? key, required this.text, required this.isDone})
+  const TodoWidget(
+      {Key? key, this.text = "(To-Do Widget)", this.isDone = false})
       : super(key: key);
 
   final String text;
@@ -59,19 +65,34 @@ class TodoWidget extends StatelessWidget {
             height: 20,
             margin: EdgeInsets.only(right: 12),
             decoration: BoxDecoration(
-                color: isDone ? Color(0xFF7349FE) : Colors.transparent,
-                borderRadius: BorderRadius.circular(6)),
+              color: isDone ? const Color(0xFF7349FE) : Colors.transparent,
+              borderRadius: BorderRadius.circular(6),
+              border: isDone
+                  ? null
+                  : Border.all(
+                      color: Color(0xFF86829D),
+                      width: 1.5,
+                    ),
+            ),
             child: Image(image: AssetImage('assets/check_icon.png')),
           ),
           Text(
-            text ?? "(To-Do Widget)",
+            text,
             style: TextStyle(
-                color: Color(0xFF211551),
+                color: isDone ? Color(0xFF211551) : Color(0xFF86829D),
                 fontSize: 16,
-                fontWeight: FontWeight.bold),
+                fontWeight: isDone ? FontWeight.bold : FontWeight.w500),
           ),
         ],
       ),
     );
+  }
+}
+
+class NoGlowScrollBehaviour extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }
