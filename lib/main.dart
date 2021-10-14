@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
-
 import 'package:todo_app/screens/homepage.dart';
 
 void main() {
